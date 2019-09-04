@@ -1,0 +1,35 @@
+<<?php
+
+
+$title = 'Mis registros';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('post', ['action' => 'add']) ?>">Add new registro</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>nombre</th>
+    <th>raza</th>
+    <th>sexo</th>
+    <th>fecha de nacimiento</th>
+    <th>caracteristicas</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($post as $post) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($post->nombre) ?></td>
+        <td><?= $this->escapeHtml($post->raza) ?></td>
+        <td><?= $this->escapeHtml($post->sexo) ?></td>
+        <td><?= $this->escapeHtml($post->fecha_de_nacimiento) ?></td>
+        <td><?= $this->escapeHtml($post->caracteristicas) ?></td>
+        <td>
+            <a href="<?= $this->url('post', ['action' => 'edit', 'id' => $post->id]) ?>">Edit</a>
+            <a href="<?= $this->url('post', ['action' => 'delete', 'id' => $post->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
+
